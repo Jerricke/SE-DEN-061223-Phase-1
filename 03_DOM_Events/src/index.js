@@ -52,7 +52,24 @@ function renderBook(book) {
 
     btn.textContent = 'Delete';
 
+    btn.addEventListener('click', ()=> li.remove())
+
     li.append(h3,pAuthor,pPrice,img,btn);
     document.querySelector('#book-list').append(li);
 }
+function handleForm(e) {
+    e.preventDefault();
+
+    const book = {
+        title: e.target.title.value,
+        author: e.target.author.vlaue,
+        price: e.target.price.value,
+        imageUrl: e.target.imageUrl.value,
+        inventory: e.target.inventory.value,
+        review: []
+    }
+    renderBook(book);
+}
+
+document.querySelector('#book-form').addEventListener('submit', handleForm)
 
