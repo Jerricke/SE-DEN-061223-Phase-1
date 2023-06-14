@@ -76,5 +76,74 @@ const bookStore = {
     ]
   }
 
+// const div = document.querySelectorAll('div')
+// div.innerHTML = ''
+console.log(bookStore.location)
+
+function renderHeader(){
+    const select = document.querySelector("h1")
+    select.textContent = bookStore.name
+    return select
+
+    //return document.querySelector("h1").textContent = bookStore.name
+}
+// renderHeader()
+
+function renderFooter(){
+    const footerDivs = document.querySelectorAll("footer div")
+    footerDivs[0].textContent = bookStore.name
+    footerDivs[1].textContent = bookStore.address
+    footerDivs[2].textContent = bookStore.hours
+    return footerDivs
+}
+
+// renderFooter()
+
+//* 1. use a forEach to iterate over BookStore inventory.
+//  2. Pass the forEach an anonymous callback that takes the inventory data and creates an li, with an h3 tag, 2 p tags, and image tag.
+// 3. Add the cardData content to the tags.
+// 4. Append li to the DOM through the ul with the id of book-list
+
+// bookStore.inventory.forEach( (cardData) => {
+//     const li = document.createElement('li');
+//     const h3 = document.createElement('h3');
+//     const pAuthor = document.createElement('p');
+//     const pPrice = document.createElement('p');
+//     const img = document.createElement('img');
+
+//     h3.textContent = cardData.title;
+//     pAuthor.textContext = cardData.author;
+//     pPrice.textContent = cardData.price;
+//     img.src = cardData.imageUrl;
+//     li.className = "list-li"
+
+//     li.append(h3, pAuthor, pPrice, img);
+//     document.querySelector('#book-list').append(li)
+// })
+
+const renderBookCard = (cardData) => {
+    const li = document.createElement('li');
+    const h3 = document.createElement('h3');
+    const pAuthor = document.createElement('p');
+    const pPrice = document.createElement('p');
+    const img = document.createElement('img');
+
+    h3.textContent = cardData.title;
+    pAuthor.textContext = cardData.author;
+    pPrice.textContent = cardData.price;
+    img.src = cardData.imageUrl;
+    li.className = "list-li"
+
+    li.append(h3, pAuthor, pPrice, img);
+    document.querySelector('#book-list').append(li)
+}
+
+renderHeader();
+renderFooter();
+bookStore.inventory.forEach(renderBookCard);
+
+//* Refactor to make the anonymous callback its own function so it can be reused later. 
 
 
+
+//Organize function calls
